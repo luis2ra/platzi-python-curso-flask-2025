@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Página de Inicio</title>
+</head>
+
+<body>
+    <h1>Bienvenido a Flask Notes</h1>
+    {% if role == "admin" %}
+    <button>Eliminar</button>
+    {% else %}
+    <button>Solicitar eliminacion</button>
+    {% endif %}
+    <ul>
+        {% for note in notes %}
+        <li>
+            {{ note }}
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+
+</html>
