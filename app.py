@@ -67,3 +67,17 @@ def create_note():
 
         return redirect(url_for("home"))
     return render_template("note_form.html")
+
+
+@app.route('/editar-nota/<int:id>', methods=["GET", "POST"])
+def edit_note(id):
+    note = Note.query.get_or_404(id)
+    if request.method == "POST":
+        title = request.form.get("title", "")
+        content = request.form.get("content", "")
+        note.title = title
+        note.content = content
+        db.session.commit()
+        return redirect(url_for("home"))
+
+    return render_template("edit_note.html", note=note)
