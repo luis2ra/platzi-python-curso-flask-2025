@@ -14,10 +14,10 @@
             {{ note.title }}
             <br>
             {{ note.content }}
-            <a href="{{ url_for('edit_note', id=note.id)}}">
+            <a href="{{ url_for('notes.edit_note', id=note.id)}}">
                 ✏️ Editar
             </a>
-            <form action="{{ url_for('delete_note', id=note.id)}}" method="post">
+            <form action="{{ url_for('notes.delete_note', id=note.id)}}" method="post">
                 <button type="submit">Eliminar</button>
             </form>
         </li>
@@ -26,7 +26,7 @@
         {% endfor %}
     </ul>
 
-    <a href="{{ url_for('create_note') }}">agregar una nueva nota</a>
+    <a href="{{ url_for('notes.create_note') }}">agregar una nueva nota</a>
 </body>
 
 </html>
