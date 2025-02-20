@@ -24,7 +24,7 @@ def create_note():
             flash("El título es muy corto, minimo 10", "error")
             return render_template("note_form.html")
 
-        if not len(content.strip()) > 300:
+        if not len(content.strip()) > 20:
             flash("El título es muy corto, minimo 300", "error")
             return render_template("note_form.html")
 
