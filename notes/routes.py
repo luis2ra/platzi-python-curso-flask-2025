@@ -1,4 +1,4 @@
-from flask import redirect, render_template, request, url_for, Blueprint
+from flask import redirect, render_template, request, url_for, Blueprint, flash
 from models import Note, db
 
 notes_bp = Blueprint("notes", __name__)
@@ -19,7 +19,7 @@ def create_note():
         note_db = Note(title=title, content=content)
         db.session.add(note_db)
         db.session.commit()
-
+        flash("Nota creada", "success")
         return redirect(url_for("notes.home"))
     return render_template("note_form.html")
 
