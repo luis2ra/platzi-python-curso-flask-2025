@@ -13,3 +13,10 @@ def login():
         else:
             flash("Usuario no permitido", "error")
     return render_template("login.html")
+
+
+@auth_bp.route("/logout")
+def logout():
+    session.pop("user", None)
+    flash("Te has deslogueado correctamente", "success")
+    return redirect(url_for("auth.login"))
