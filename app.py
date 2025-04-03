@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, jsonify
 
 from config import Config
 from models import db
@@ -22,5 +22,14 @@ def create_app(config_class=Config):
         if request.method == "POST":
             return "Formulario enviado correctamente", 201
         return "Pagina de contacto"
+
+    @app.route("/api/info")
+    def api_info():
+        data = {
+            "name": "Notas API",
+            "version": "1.0.0",
+            "description": "API para gestionar notas",
+        }
+        return jsonify(data), 200
 
     return app
